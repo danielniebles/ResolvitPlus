@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import MovieCard from "../components/MovieCard";
-import ImagesSwiper from "../components/Swiper";
+import Swiper from "../components/Swiper";
 import usePopularMovies from "../hooks/usePopularMovies";
 
 const SectionContainer = styled.section`
@@ -13,11 +13,10 @@ const SectionContainer = styled.section`
 
 const Popular = () => {
   const { popularMovies } = usePopularMovies();
-  console.log(popularMovies);
 
   return (
     <SectionContainer>
-      <ImagesSwiper
+      <Swiper
         swiperParams={{
           slidesPerView: "auto",
           spaceBetween: 30,
@@ -39,7 +38,7 @@ const Popular = () => {
             );
           }
         )}
-      </ImagesSwiper>
+      </Swiper>
     </SectionContainer>
   );
 };
