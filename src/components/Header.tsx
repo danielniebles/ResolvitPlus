@@ -8,6 +8,7 @@ const StyledHeader = styled.header<{ showMenu: boolean }>`
   width: 100%;
   height: 3rem;
   align-items: center;
+  z-index: 3;
   nav {
     display: flex;
     justify-content: space-between;
