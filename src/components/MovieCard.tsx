@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import Genre from "../interfaces/Genre";
+import buildImageUrl from "../utils/buildImageUrl";
 import Chip from "./Chip";
 import Rating from "./Rating";
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ posterPath: string }>`
   background-clip: border-box;
-  background-image: url("https://image.tmdb.org/t/p/w500/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg");
+  background-image: url(${({ posterPath }) => posterPath});
   background-repeat: no-repeat;
   background-size: cover;
   height: 400px;
@@ -36,13 +37,17 @@ const MovieCard = ({
   genres,
   rating,
   title,
+  posterPath,
 }: {
   genres: Genre[];
   rating: number;
   title: string;
+  posterPath: string;
 }) => {
   return (
-    <CardContainer>
+    <CardContainer
+      posterPath={buildImageUrl({ width: 500, imgPath: posterPath })}
+    >
       <footer className="info__footer">
         <div className="genres">
           {genres.slice(0, 2).map(({ name, color }) => (

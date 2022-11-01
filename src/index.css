@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-
 :root {
   font-family: 'Poppins',Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -29,6 +28,12 @@
   --font-semi-bold: 600;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -40,10 +45,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  place-items: center;
 }
 
 h1 {
@@ -81,4 +84,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
