@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { Backdrop } from "../shared/interfaces/Backdrop";
-import Genre from "../shared/interfaces/Genre";
 import { Movie } from "../shared/interfaces/Movie";
 import buildImageUrl from "../utils/buildImageUrl";
-import Chip from "./Chip";
 import Rating from "./Rating";
 
 const CoverContainer = styled.div<{ posterPath: string }>`

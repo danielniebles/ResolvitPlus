@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import styled from "styled-components";
-import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
-import useIntersection from "../hooks/useIntersection";
 import SearchBar from "../components/SearchBar";
 import MoviesGrid from "../components/MoviesGrid";
 import { useLocation } from "wouter";

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import MovieCover from "../components/MovieCover";
 import Swiper from "../components/Swiper";

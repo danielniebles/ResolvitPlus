@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import getByParams from "../services/getByParams";
-import getMovies from "../services/getMovies";
-import getMoviesByKeyword from "../services/getMoviesByKeyword";
+import { RawMovie } from "../shared/interfaces/RawMovie";
 import handleSearchAction from "./utils/handleSearchAction";
 
-const useSearchMode = ({
-  type,
-  version,
-  query,
-}: {
+interface Props {
   type: string;
   version: string;
   query?: string;
-}) => {
+}
+
+const useSearchMode = ({ type, version, query }: Props) => {
   const [searchMode, setSearchMode] = useState("initial");
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<RawMovie[]>([]);
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState("");
   const [genre, setGenre] = useState(18);
@@ -29,7 +25,7 @@ const useSearchMode = ({
       page,
       version,
       keyword,
-      query,
+      query: query as string,
       setMovies,
     });
   }, [searchMode, keyword, query]);
@@ -43,7 +39,7 @@ const useSearchMode = ({
       page,
       version,
       keyword,
-      query,
+      query: query as string,
       setMovies,
     });
   }, [page]);

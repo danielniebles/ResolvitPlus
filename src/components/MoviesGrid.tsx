@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import useIntersection from "../hooks/useIntersection";
-import Genre from "../shared/interfaces/Genre";
 import { RawMovie } from "../shared/interfaces/RawMovie";
 import MovieCard from "./MovieCard";
 

@@ -1,6 +1,5 @@
 import MoviesGrid from "../components/MoviesGrid";
 import SearchBar from "../components/SearchBar";
-import useDiscoverMovies from "../hooks/useDiscoverMovies";
 import { useLocation } from "wouter";
 import { useEffect, useState, ChangeEvent } from "react";
 import useSearchMode from "../hooks/useSearchMode";
