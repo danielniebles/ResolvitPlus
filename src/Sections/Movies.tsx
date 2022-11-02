@@ -5,47 +5,24 @@ import SectionHeader from "../components/SectionHeader";
 import useLatestMovies from "../hooks/useLatestMovies";
 import useIntersection from "../hooks/useIntersection";
 import SearchBar from "../components/SearchBar";
-
-const MoviesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 30px;
-  min-height: 50vh;
-`;
+import MoviesGrid from "../components/MoviesGrid";
+import { useLocation } from "wouter";
 
 const Movies = () => {
-  const { latestMovies, setPage, setKeyword } = useLatestMovies();
-  const { containerRef, isVisible } = useIntersection();
-
-  useEffect(() => {
-    if(!isVisible) return;
-    setPage((prev) => prev + 1);
-  }, [isVisible]);
+  const { latestMovies = [], setPage, setKeyword } = useLatestMovies();
+  const [, pushLocation] = useLocation();
 
   return (
     <>
-      <SectionHeader title="Movies" icon="uil uil-film" />
-      <SearchBar setKeyword={setKeyword} />
-      <MoviesGrid>
-        {latestMovies.map(
-          ({
-            vote_average: rating,
-            original_title: title,
-            poster_path: posterPath,
-          }) => {
-            return (
-              <MovieCard
-                rating={rating}
-                title={title}
-                genres={[]}
-                posterPath={posterPath}
-              />
-            );
-          }
-        )}
-      </MoviesGrid>
-      <div ref={containerRef}></div>
+      <SectionHeader
+        title="Movies"
+        icon="uil uil-film"
+        onClick={() => {
+          pushLocation("/search");
+        }}
+      />
+      <SearchBar setKeyword={setKeyword} onSubmit={() => {}} />
+      <MoviesGrid movies={latestMovies} setPage={setPage} />
     </>
   );
 };
