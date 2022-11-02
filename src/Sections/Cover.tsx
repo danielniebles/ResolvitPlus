@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import MovieCover from "../components/MovieCover";
 import Swiper from "../components/Swiper";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import useMovies from "../hooks/useMovies";
 
 const SectionContainer = styled.section`
   display: flex;
@@ -13,7 +13,7 @@ const SectionContainer = styled.section`
 `;
 
 const Cover = () => {
-  const { upcomingMovies } = useUpcomingMovies();
+  const { movies } = useMovies({ type: "upcoming", version: "extended" });
 
   return (
     <SectionContainer>
@@ -21,23 +21,26 @@ const Cover = () => {
         swiperParams={{
           slidesPerView: 1,
           autoplay: {
-            delay: 2500,
+            delay: 500,
             disableOnInteraction: false,
           },
         }}
+        hideControls
       >
-        {upcomingMovies.map(
+        {movies.map(
           ({
             vote_average: rating,
             original_title: title,
-            backdrops,
+            images: { backdrops },
             overview,
+            id,
           }) => (
             <MovieCover
               rating={rating}
               title={title}
               backdrops={backdrops}
               overview={overview}
+              key={id}
             />
           )
         )}

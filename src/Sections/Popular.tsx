@@ -2,7 +2,8 @@ import styled from "styled-components";
 import MovieCard from "../components/MovieCard";
 import Swiper from "../components/Swiper";
 import SectionHeader from "../components/SectionHeader";
-import usePopularMovies from "../hooks/usePopularMovies";
+import useMovies from "../hooks/useMovies";
+import { useLocation } from "wouter";
 
 const SectionContainer = styled.section`
   display: flex;
@@ -13,14 +14,18 @@ const SectionContainer = styled.section`
 `;
 
 const Popular = () => {
-  const { popularMovies } = usePopularMovies();
+  const { movies } = useMovies({ type: "top_rated", version: "basic" });
+  const [, pushLocation] = useLocation();
 
   return (
     <>
       <SectionHeader
         title="Trending Now"
         icon="uil uil-arrow-growth"
-      ></SectionHeader>
+        onClick={() => {
+          pushLocation("/search");
+        }}
+      />
       <SectionContainer>
         <Swiper
           swiperParams={{
@@ -29,14 +34,16 @@ const Popular = () => {
           }}
           hideControls={false}
         >
-          {popularMovies.map(
+          {movies.map(
             ({
+              id,
               vote_average: rating,
               original_title: title,
               poster_path: posterPath,
             }) => {
               return (
                 <MovieCard
+                  key={id}
                   rating={rating}
                   title={title}
                   genres={[]}

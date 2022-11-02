@@ -2,14 +2,18 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
-import useLatestMovies from "../hooks/useLatestMovies";
+import useMovies from "../hooks/useMovies";
 import useIntersection from "../hooks/useIntersection";
 import SearchBar from "../components/SearchBar";
 import MoviesGrid from "../components/MoviesGrid";
 import { useLocation } from "wouter";
 
 const Movies = () => {
-  const { latestMovies = [], setPage, setKeyword } = useLatestMovies();
+  const {
+    movies = [],
+    setPage,
+    setKeyword,
+  } = useMovies({ type: "now_playing", version: "basic" });
   const [, pushLocation] = useLocation();
 
   return (
@@ -22,7 +26,7 @@ const Movies = () => {
         }}
       />
       <SearchBar setKeyword={setKeyword} onSubmit={() => {}} />
-      <MoviesGrid movies={latestMovies} setPage={setPage} />
+      <MoviesGrid movies={movies} setPage={setPage} />
     </>
   );
 };
