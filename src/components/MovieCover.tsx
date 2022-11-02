@@ -23,6 +23,7 @@ const CoverContainer = styled.div<{ posterPath: string }>`
     background-image: url(${({ posterPath }) => posterPath});
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     opacity: 0.5;
   }
   aside {
