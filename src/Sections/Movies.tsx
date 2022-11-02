@@ -7,13 +7,15 @@ import useIntersection from "../hooks/useIntersection";
 import SearchBar from "../components/SearchBar";
 import MoviesGrid from "../components/MoviesGrid";
 import { useLocation } from "wouter";
+import useSearchMode from "../hooks/useSearchMode";
 
 const Movies = () => {
   const {
     movies = [],
     setPage,
     setKeyword,
-  } = useMovies({ type: "now_playing", version: "basic" });
+    setSearchMode,
+  } = useSearchMode({ type: "now_playing", version: "basic" });
   const [, pushLocation] = useLocation();
 
   return (
@@ -25,7 +27,12 @@ const Movies = () => {
           pushLocation("/search");
         }}
       />
-      <SearchBar setKeyword={setKeyword} onSubmit={() => {}} />
+      <SearchBar
+        setKeyword={setKeyword}
+        onSubmit={() => {}}
+        setSearchMode={setSearchMode}
+        setPage={setPage}
+      />
       <MoviesGrid movies={movies} setPage={setPage} />
     </>
   );
