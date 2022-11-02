@@ -9,9 +9,11 @@ const CardContainer = styled.div<{ posterPath: string }>`
   background-image: url(${({ posterPath }) => posterPath});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   height: 400px;
   position: relative;
-  width: 300px;
+  max-width: 300px;
+  min-width: 200px;
   .info__footer {
     align-items: start;
     background: linear-gradient(to bottom, transparent 0%, black 100%);
