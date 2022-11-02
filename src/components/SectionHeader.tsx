@@ -36,7 +36,7 @@ const SectionHeader = ({ title, icon }: { title: string; icon: string }) => (
           <i className={icon}></i>
           <h1>{title}</h1>
         </div>
-        <PrimaryButton text="See more" onClick={() => {}} />
+        <PrimaryButton text="See more" onClick={() => {}} border='10px' />
       </div>
       <hr className="rounded"></hr>
     </Container>

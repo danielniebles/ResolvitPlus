@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonStyles = styled.a`
+const ButtonStyles = styled.a<{ border?: string }>`
   background: linear-gradient(to right, #ca1919, #ff914d);
   background-color: #ca1919;
   color: #fff;
@@ -9,9 +9,9 @@ const ButtonStyles = styled.a`
   font-weight: 800;
   font-style: normal;
   text-decoration: none;
-  padding: 14px 15px;
+  padding: 10px 10px;
   border: 0px solid #000;
-  border-radius: 10px;
+  border-radius: ${({ border }) => border};
   display: inline-block;
 
   :hover {
@@ -26,9 +26,15 @@ const ButtonStyles = styled.a`
 const PrimaryButton = ({
   text,
   onClick,
+  border,
 }: {
   text: string;
-  onClick: () => void;
-}) => <ButtonStyles onClick={onClick}>{text}</ButtonStyles>;
+  onClick: (arg: any) => void;
+  border?: string;
+}) => (
+  <ButtonStyles border={border} onClick={onClick}>
+    {text}
+  </ButtonStyles>
+);
 
 export default PrimaryButton;
