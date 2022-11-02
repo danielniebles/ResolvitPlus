@@ -10,7 +10,11 @@ const RatingContainer = styled.div`
   }
 `;
 
-const Rating = ({ rating }: { rating: number }) => (
+interface RatingProps {
+  rating: number;
+}
+
+const Rating = ({ rating }: RatingProps) => (
   <RatingContainer>
     <i className="uis uis-star"></i>
     <span>{rating}</span>

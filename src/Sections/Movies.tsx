@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
-import useMovies from "../hooks/useMovies";
 import useIntersection from "../hooks/useIntersection";
 import SearchBar from "../components/SearchBar";
 import MoviesGrid from "../components/MoviesGrid";
@@ -29,7 +28,6 @@ const Movies = () => {
       />
       <SearchBar
         setKeyword={setKeyword}
-        onSubmit={() => {}}
         setSearchMode={setSearchMode}
         setPage={setPage}
       />

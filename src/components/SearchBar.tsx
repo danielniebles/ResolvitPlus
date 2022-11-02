@@ -1,4 +1,11 @@
-import { useState, memo, ChangeEvent, SyntheticEvent } from "react";
+import {
+  useState,
+  memo,
+  ChangeEvent,
+  SyntheticEvent,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import styled from "styled-components";
 import PrimaryButton from "./PrimaryButton";
 
@@ -15,18 +22,25 @@ const StyledForm = styled.form`
     outline: none;
     color: #9dbfaf;
   }
-
   .search__input:focus {
     color: #ffffff;
   }
 `;
 
-const SearchBar = ({ setKeyword }: { setKeyword: (arg: string) => void }) => {
+interface SearchBarProps {
+  setKeyword: Dispatch<SetStateAction<string>>;
+  setSearchMode: Dispatch<SetStateAction<string>>;
+  setPage: Dispatch<SetStateAction<number>>;
+}
+
+const SearchBar = ({ setKeyword, setSearchMode, setPage }: SearchBarProps) => {
   const [value, setValue] = useState("");
 
   // TODO: Check this event type
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
+    setSearchMode("byKeyword");
+    setPage(1);
     setKeyword(value);
   };
 
@@ -43,7 +57,11 @@ const SearchBar = ({ setKeyword }: { setKeyword: (arg: string) => void }) => {
         value={value}
         className="search__input"
       />
-      <PrimaryButton text="Buscar" onClick={handleSubmit} border="0 10px 10px 0" />
+      <PrimaryButton
+        text="Buscar"
+        onClick={handleSubmit}
+        border="0 10px 10px 0"
+      />
     </StyledForm>
   );
 };

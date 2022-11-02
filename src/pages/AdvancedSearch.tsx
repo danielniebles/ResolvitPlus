@@ -36,7 +36,6 @@ const AdvancedSearch = () => {
     <>
       <SearchBar
         setKeyword={setKeyword}
-        onSubmit={() => {}}
         setPage={setPage}
         setSearchMode={setSearchMode}
       />

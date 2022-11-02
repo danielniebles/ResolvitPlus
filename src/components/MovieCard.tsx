@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Genre from "../interfaces/Genre";
+import Genre from "../shared/interfaces/Genre";
+import { Movie } from "../shared/interfaces/Movie";
 import buildImageUrl from "../utils/buildImageUrl";
 import Chip from "./Chip";
 import Rating from "./Rating";
@@ -14,6 +15,9 @@ const CardContainer = styled.div<{ posterPath: string }>`
   position: relative;
   max-width: 300px;
   min-width: 200px;
+  :hover {
+    transform: scale(1.05);
+  }
   .info__footer {
     align-items: start;
     background: linear-gradient(to bottom, transparent 0%, black 100%);
@@ -35,29 +39,19 @@ const CardContainer = styled.div<{ posterPath: string }>`
   }
 `;
 
-const MovieCard = ({
-  genres,
-  rating,
-  title,
-  posterPath,
-}: {
-  genres: Genre[];
-  rating: number;
-  title: string;
-  posterPath: string;
-}) => {
+const MovieCard = ({ genres, rating, title, posterPath }: Movie) => {
   return (
     <CardContainer
-      posterPath={buildImageUrl({ width: 500, imgPath: posterPath })}
+      posterPath={buildImageUrl({ width: 500, imgPath: posterPath as string })}
     >
       <footer className="info__footer">
         <div className="genres">
-          {genres.slice(0, 2).map(({ name, color }) => (
-            <Chip text={name} color={color} />
+          {(genres as Genre[]).slice(0, 2).map(({ name, color, id }) => (
+            <Chip key={id} text={name} color={color} />
           ))}
         </div>
         <h2 className="movie-title">{title}</h2>
-        <Rating rating={rating} />
+        <Rating rating={rating as number} />
       </footer>
     </CardContainer>
   );

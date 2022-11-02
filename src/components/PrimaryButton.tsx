@@ -23,15 +23,13 @@ const ButtonStyles = styled.a<{ border?: string }>`
   }
 `;
 
-const PrimaryButton = ({
-  text,
-  onClick,
-  border,
-}: {
+interface PrimaryButtonProps {
   text: string;
   onClick: (arg: any) => void;
   border?: string;
-}) => (
+}
+
+const PrimaryButton = ({ text, onClick, border }: PrimaryButtonProps) => (
   <ButtonStyles border={border} onClick={onClick}>
     {text}
   </ButtonStyles>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import Genre from "../interfaces/Genre";
+import { Backdrop } from "../shared/interfaces/Backdrop";
+import Genre from "../shared/interfaces/Genre";
+import { Movie } from "../shared/interfaces/Movie";
 import buildImageUrl from "../utils/buildImageUrl";
 import Chip from "./Chip";
 import Rating from "./Rating";
@@ -33,18 +35,8 @@ const CoverContainer = styled.div<{ posterPath: string }>`
   }
 `;
 
-const MovieCover = ({
-  rating,
-  title,
-  backdrops,
-  overview,
-}: {
-  rating: number;
-  title: string;
-  backdrops: { width: number; file_path: string }[];
-  overview: string;
-}) => {
-  const [selectedBackdrop] = backdrops;
+const MovieCover = ({ rating, title, backdrops, overview }: Movie) => {
+  const [selectedBackdrop] = backdrops as Backdrop[];
   return (
     <CoverContainer
       posterPath={buildImageUrl({
@@ -56,7 +48,7 @@ const MovieCover = ({
         <div>
           <h1 className="movie-title">{title}</h1>
           <p>{overview}</p>
-          <Rating rating={rating} />
+          <Rating rating={rating as number} />
         </div>
       </aside>
     </CoverContainer>

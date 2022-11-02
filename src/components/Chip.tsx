@@ -11,7 +11,12 @@ const StyledChip = styled.span`
   width: fit-content;
 `;
 
-const Chip = ({ text, color }: { text: string; color: string }) => (
+interface ChipProps {
+  text: string;
+  color: string;
+}
+
+const Chip = ({ text, color }: ChipProps) => (
   <StyledChip color={color}>{text}</StyledChip>
 );
 
