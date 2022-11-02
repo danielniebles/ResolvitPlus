@@ -4,6 +4,7 @@ import MovieCard from "../components/MovieCard";
 import SectionHeader from "../components/SectionHeader";
 import useLatestMovies from "../hooks/useLatestMovies";
 import useIntersection from "../hooks/useIntersection";
+import SearchBar from "../components/SearchBar";
 
 const MoviesGrid = styled.div`
   display: grid;
@@ -14,16 +15,18 @@ const MoviesGrid = styled.div`
 `;
 
 const Movies = () => {
-  const { latestMovies, setPage } = useLatestMovies();
+  const { latestMovies, setPage, setKeyword } = useLatestMovies();
   const { containerRef, isVisible } = useIntersection();
 
   useEffect(() => {
+    if(!isVisible) return;
     setPage((prev) => prev + 1);
   }, [isVisible]);
 
   return (
     <>
       <SectionHeader title="Movies" icon="uil uil-film" />
+      <SearchBar setKeyword={setKeyword} />
       <MoviesGrid>
         {latestMovies.map(
           ({
