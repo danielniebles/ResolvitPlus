@@ -8,8 +8,8 @@ import { useLocation } from "wouter";
 const SectionContainer = styled.section`
   display: flex;
   justify-content: center;
-  width: 100%;
   margin: auto;
+  max-width: 1280px;
   padding: 2rem;
 `;
 

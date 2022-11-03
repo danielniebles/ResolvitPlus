@@ -5,11 +5,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  margin: 0 auto;
+  max-width: 1280px;
   padding: 30px;
   .section__title {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
   .title {
     display: flex;
@@ -22,9 +24,9 @@ const Container = styled.div`
     margin-right: 1rem;
   }
   hr.rounded {
-    margin-top: 1rem;
-    border-top: 2px solid #bbb;
     border-radius: 5px;
+    border-top: 2px solid #bbb;
+    margin-top: 1rem;
   }
 `;
 

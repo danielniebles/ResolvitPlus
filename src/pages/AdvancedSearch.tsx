@@ -7,12 +7,14 @@ import styled from "styled-components";
 import useGenres from "../hooks/useGenres";
 
 const Container = styled.div`
+  margin: 0 auto;
   margin-top: 4rem;
+  max-width: 1280px;
   .genres {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    place-items: start;
     padding: 30px;
+    place-items: start;
     .radio__label {
       margin-left: 10px;
     }
