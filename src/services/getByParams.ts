@@ -5,7 +5,7 @@ const getByParams = ({
   queryString?: string;
   page: number;
 }) => {
-  return fetch(`http://localhost:3000/movies/advanced/${queryString}&page=${page}`)
+  return fetch(`${import.meta.env.VITE_MOVIES_API}/movies/advanced/${queryString}&page=${page}`)
     .then((res) => res.json())
     .then(({ data }) => data);
 };

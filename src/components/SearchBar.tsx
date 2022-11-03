@@ -21,6 +21,7 @@ const StyledForm = styled.form`
     border-radius: 5px 0 0 5px;
     outline: none;
     color: #9dbfaf;
+    font-family: inherit;
   }
   .search__input:focus {
     color: #ffffff;
@@ -36,7 +37,6 @@ interface SearchBarProps {
 const SearchBar = ({ setKeyword, setSearchMode, setPage }: SearchBarProps) => {
   const [value, setValue] = useState("");
 
-  // TODO: Check this event type
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
     setSearchMode("byKeyword");
@@ -51,14 +51,14 @@ const SearchBar = ({ setKeyword, setSearchMode, setPage }: SearchBarProps) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <input
-        placeholder="Search a gif..."
+        placeholder="Search something..."
         onChange={handleInputChange}
         type="text"
         value={value}
         className="search__input"
       />
       <PrimaryButton
-        text="Buscar"
+        text="Search"
         onClick={handleSubmit}
         border="0 10px 10px 0"
       />

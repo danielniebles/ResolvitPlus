@@ -1,5 +1,5 @@
 const getAllGenres = () => {
-  return fetch(`http://localhost:3000/genres`)
+  return fetch(`${import.meta.env.VITE_MOVIES_API}/genres`)
     .then((res) => res.json())
     .then(({ data }) => data);
 };

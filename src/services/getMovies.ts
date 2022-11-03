@@ -7,7 +7,7 @@ const getMovies = ({
   page: number;
   version: string;
 }) => {
-  return fetch(`http://localhost:3000/movies/${version}/${type}?page=${page}`)
+  return fetch(`${import.meta.env.VITE_MOVIES_API}/movies/${version}/${type}?page=${page}`)
     .then((res) => res.json())
     .then(({ data }) => data);
 };

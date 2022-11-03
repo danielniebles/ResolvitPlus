@@ -32,7 +32,7 @@ const CardContainer = styled.div<{ posterPath: string }>`
       font-size: var(--h2-font-size);
       margin: 5px;
     }
-    .genres {
+    .genres__container {
       display: flex;
       gap: 10px;
     }
@@ -45,7 +45,7 @@ const MovieCard = ({ genres, rating, title, posterPath }: Movie) => {
       posterPath={buildImageUrl({ width: 500, imgPath: posterPath as string })}
     >
       <footer className="info__footer">
-        <div className="genres">
+        <div className="genres__container">
           {(genres as Genre[]).slice(0, 2).map(({ name, color, id }) => (
             <Chip key={id} text={name} color={color} />
           ))}

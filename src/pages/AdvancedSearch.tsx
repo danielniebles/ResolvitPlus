@@ -57,8 +57,8 @@ const AdvancedSearch = () => {
       />
       <div onChange={handleGenre} className="genres">
         {genres.map(({ id, name }) => (
-          <div>
-            <input type="radio" value={id} name="genre" checked={genre===id} />
+          <div key={id}>
+            <input type="radio" value={id} name="genre" />
             <label className="radio__label">{name}</label>
           </div>
         ))}
