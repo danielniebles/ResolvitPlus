@@ -4,10 +4,20 @@ import { useLocation } from "wouter";
 import { useEffect, useState, ChangeEvent } from "react";
 import useSearchMode from "../hooks/useSearchMode";
 import styled from "styled-components";
+import useGenres from "../hooks/useGenres";
 
 const Container = styled.div`
   margin-top: 4rem;
-`
+  .genres {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    place-items: start;
+    padding: 30px;
+    .radio__label {
+      margin-left: 10px;
+    }
+  }
+`;
 
 const AdvancedSearch = () => {
   const [windowQuery, setWindowQuery] = useState(window.location.search);
@@ -17,11 +27,13 @@ const AdvancedSearch = () => {
     setKeyword,
     setGenre,
     setSearchMode,
+    genre,
   } = useSearchMode({
     type: "now_playing",
     version: "basic",
     query: windowQuery || `?withGenres=18`,
   });
+  const { genres } = useGenres();
   const [, pushLocation] = useLocation();
 
   const handleGenre = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,10 +55,13 @@ const AdvancedSearch = () => {
         setPage={setPage}
         setSearchMode={setSearchMode}
       />
-      <div onChange={handleGenre}>
-        <input type="radio" value={28} name="genre" /> Action
-        <input type="radio" value={35} name="genre" /> Comedy
-        <input type="radio" value={18} name="genre" /> Drama
+      <div onChange={handleGenre} className="genres">
+        {genres.map(({ id, name }) => (
+          <div>
+            <input type="radio" value={id} name="genre" checked={genre===id} />
+            <label className="radio__label">{name}</label>
+          </div>
+        ))}
       </div>
       <MoviesGrid movies={movies} setPage={setPage} />
     </Container>
