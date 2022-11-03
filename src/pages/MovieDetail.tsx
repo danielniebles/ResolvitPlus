@@ -115,7 +115,7 @@ const MovieDetail = ({ params }: RouteComponentProps<{ id: string }>) => {
                   color="#30b02c"
                 />
                 <IconTag
-                  value={runtime as string}
+                  value={`${runtime as string} min.`}
                   icon="uil uil-hourglass"
                   color="#1f82c4"
                 />
