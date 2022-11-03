@@ -13,21 +13,27 @@ import "swiper/css/scrollbar";
 import React from "react";
 import styled from "styled-components";
 
-const StyledSwiper = styled(Swiper)`
+const StyledSwiper = styled(Swiper)<{ hideControls: boolean }>`
   .swiper-slide {
     width: fit-content;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: ${({ hideControls }) => (hideControls ? "none" : "")};
   }
 `;
 
 const ImagesSwiper = ({
   children,
   swiperParams,
+  hideControls,
 }: {
   children: React.ReactNode | React.ReactNode[];
+  hideControls: boolean;
   swiperParams: {
     slidesPerView: string | number;
     spaceBetween?: number;
-    autoplay?: {delay: number; disableOnInteraction: boolean};
+    autoplay?: { delay: number; disableOnInteraction: boolean };
   };
 }) => {
   return (
@@ -35,6 +41,7 @@ const ImagesSwiper = ({
       modules={[Navigation, Pagination, Controller, Autoplay]}
       navigation
       initialSlide={0}
+      hideControls={hideControls}
       {...(swiperParams as SwiperOptions)}
     >
       {React.Children.map(children, (child, index) => {
