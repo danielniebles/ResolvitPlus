@@ -4,21 +4,27 @@ import { RawMovie } from "../shared/interfaces/RawMovie";
 
 const useMovies = ({ type, version }: { type: string; version: string }) => {
   const [movies, setMovies] = useState<RawMovie[]>([]);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getMovies({ type, page, version }).then((res) => setMovies(res));
+    setLoading(true);
+    getMovies({ type, page, version }).then((res) => {
+      setLoading(false);
+      setMovies(res);
+    });
   }, []);
 
   useEffect(() => {
     if (page === 1) return;
-    getMovies({ type, page, version }).then((res) =>
-      setMovies((prev) => prev.concat(res))
-    );
+    setLoading(true);
+    getMovies({ type, page, version }).then((res) => {
+      setLoading(false);
+      setMovies((prev) => prev.concat(res));
+    });
   }, [page]);
 
-
-  return { movies, setPage };
+  return { movies, setPage, loading };
 };
 
 export default useMovies;

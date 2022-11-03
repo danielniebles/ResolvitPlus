@@ -29,7 +29,23 @@ const CoverContainer = styled.div<{ posterPath: string }>`
   aside {
     display: grid;
     position: relative;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    .overview {
+      height: inherit;
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    aside {
+      display: grid;
+      position: relative;
+      grid-template-columns: 1fr 1fr;
+      .overview {
+        height: inherit;
+        max-height: none;
+      }
+    }
   }
 `;
 
@@ -45,7 +61,7 @@ const MovieCover = ({ rating, title, backdrops, overview }: Movie) => {
       <aside className="info__footer">
         <div>
           <h1 className="movie-title">{title}</h1>
-          <p>{overview}</p>
+          <p className="overview">{overview}</p>
           <Rating rating={rating as number} />
         </div>
       </aside>

@@ -3,6 +3,11 @@ import SearchBar from "../components/SearchBar";
 import { useLocation } from "wouter";
 import { useEffect, useState, ChangeEvent } from "react";
 import useSearchMode from "../hooks/useSearchMode";
+import styled from "styled-components";
+
+const Container = styled.div`
+  margin-top: 4rem;
+`
 
 const AdvancedSearch = () => {
   const [windowQuery, setWindowQuery] = useState(window.location.search);
@@ -32,7 +37,7 @@ const AdvancedSearch = () => {
   }, [window.location.search]);
 
   return (
-    <>
+    <Container>
       <SearchBar
         setKeyword={setKeyword}
         setPage={setPage}
@@ -44,7 +49,7 @@ const AdvancedSearch = () => {
         <input type="radio" value={18} name="genre" /> Drama
       </div>
       <MoviesGrid movies={movies} setPage={setPage} />
-    </>
+    </Container>
   );
 };
 
