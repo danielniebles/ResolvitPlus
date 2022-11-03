@@ -4,12 +4,14 @@ import "./App.css";
 import Home from "./pages/Home";
 import { Route } from "wouter";
 import AdvancedSearch from "./pages/AdvancedSearch";
+import Header from "./components/Header";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+      <Header />
       <Route component={Home} path="/home" />
       <Route component={AdvancedSearch} path="/search" />
     </>

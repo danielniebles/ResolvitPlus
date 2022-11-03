@@ -25,7 +25,6 @@ const handleSearchAction = ({
 }: Params) => {
   const actions = {
     initial: () => {
-      console.log("test");
       getMovies({ type, page, version }).then((res) => {
         setMovies((prev) => (page > 1 ? prev.concat(res) : res));
       });
