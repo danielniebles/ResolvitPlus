@@ -113,7 +113,7 @@ const Header = () => {
         <div
           className="logo"
           onClick={() => {
-            pushLocation("/home");
+            pushLocation("/");
           }}
         >
           <i className="uil uil-estate home__icon"></i>
