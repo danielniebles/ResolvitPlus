@@ -10,4 +10,8 @@ export interface RawMovie {
   overview?: string;
   id: number;
   images: { backdrops: Backdrop[] }
+  release_date?: string;
+  revenue?: number;
+  tagline?: string;
+  runtime?: string;
 }

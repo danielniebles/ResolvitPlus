@@ -48,6 +48,7 @@ const Popular = () => {
                   title={title}
                   genres={[]}
                   posterPath={posterPath}
+                  id={id}
                 />
               );
             }

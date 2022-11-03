@@ -18,7 +18,6 @@ const StyledHeader = styled.header<{ showMenu: boolean; isScrolled: boolean }>`
     justify-content: space-between;
     align-items: center;
     height: inherit;
-    //backdrop-filter: ${({ isScrolled }) => (isScrolled ? "blur(10px)" : "")};
   }
   .logo {
     margin-left: 1em;

@@ -8,4 +8,5 @@ export interface Movie {
   posterPath?: string;
   backdrops?: Backdrop[];
   overview?: string;
+  id?: number;
 }

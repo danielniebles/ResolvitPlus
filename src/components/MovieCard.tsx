@@ -4,6 +4,7 @@ import { Movie } from "../shared/interfaces/Movie";
 import buildImageUrl from "../utils/buildImageUrl";
 import Chip from "./Chip";
 import Rating from "./Rating";
+import { useLocation } from "wouter";
 
 const CardContainer = styled.div<{ posterPath: string }>`
   background-clip: border-box;
@@ -39,10 +40,14 @@ const CardContainer = styled.div<{ posterPath: string }>`
   }
 `;
 
-const MovieCard = ({ genres, rating, title, posterPath }: Movie) => {
+const MovieCard = ({ genres, rating, title, posterPath, id }: Movie) => {
+  const [, pushLocation] = useLocation();
   return (
     <CardContainer
       posterPath={buildImageUrl({ width: 500, imgPath: posterPath as string })}
+      onClick={() => {
+        pushLocation(`/movie/${id}`);
+      }}
     >
       <footer className="info__footer">
         <div className="genres__container">

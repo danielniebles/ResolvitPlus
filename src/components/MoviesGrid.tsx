@@ -46,6 +46,7 @@ const MoviesGrid = ({ movies, setPage }: MoviesGridProps) => {
                 genres={genres}
                 posterPath={posterPath}
                 key={id}
+                id={id}
               />
             );
           }
