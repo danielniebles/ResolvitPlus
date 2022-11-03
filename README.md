@@ -12,10 +12,14 @@ If you just want to search for some movies, click [here](https://resolvit-plus.v
 To run locally, download the API from [this repository](https://github.com/danielniebles/ResolvitPlus-server), then run the following commands:
 ```bash
 npm i
-npm run dev
+npm run start:dev
 ```
 #### Client 💻
-Clone the current repository, and then run the same commands as above!
+Clone the current repository, and then run this commands:
+```bash
+npm i
+npm run dev
+```
 
 In both projects you're going to need an .env file, do not hesitate to ask me for it! 🤗
 
