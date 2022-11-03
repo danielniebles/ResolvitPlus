@@ -10,6 +10,9 @@ const Container = styled.div`
   gap: 10px;
   padding: 30px;
   min-height: 100vh;
+  @media screen and (max-width: 768px) {
+    place-items: center;
+  }
 `;
 
 interface MoviesGridProps {

@@ -14,7 +14,7 @@ const CardContainer = styled.div<{ posterPath: string }>`
   height: 400px;
   position: relative;
   max-width: 300px;
-  min-width: 200px;
+  min-width: 250px;
   :hover {
     transform: scale(1.05);
   }

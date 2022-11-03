@@ -10,7 +10,7 @@ const Container = styled.div`
   margin-top: 4rem;
   .genres {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     place-items: start;
     padding: 30px;
     .radio__label {
